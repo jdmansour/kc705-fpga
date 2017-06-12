@@ -40,7 +40,7 @@ set files [list \
  "[file normalize "$essentials_dir/$pcie.v"]"\
  "[file normalize "$essentials_dir/${pcie}_pipe_clock.v"]"\
  "[file normalize "$essentials_dir/fifo_8x2048/fifo_8x2048.xci"]"\
- "[file normalize "$essentials_dir/fifo_32x512/fifo_32x512.xci"]"\
+ "[file normalize "$essentials_dir/async_fifo_32/async_fifo_32.xci"]"\
  "[file normalize "$essentials_dir/$pcie_vivado/$pcie_vivado.xci"]"\
 ]
 add_files -norecurse -fileset $obj $files

@@ -94,6 +94,8 @@ module xillybus(PCIE_TX_P, PCIE_TX_N, PCIE_RX_P, PCIE_RX_N, PCIE_REFCLK_P,
   wire  PIPE_GEN3_OUT;
   wire  PIPE_OOBCLK_IN;
 
+  // Wires used for external clocking connectivity
+
    IBUFDS_GTE2 pcieclk_ibuf (.O(pcie_ref_clk), .ODIV2(),
 			     .I(PCIE_REFCLK_P), .IB(PCIE_REFCLK_N),
 			     .CEB(1'b0));
@@ -234,7 +236,7 @@ module xillybus(PCIE_TX_P, PCIE_TX_N, PCIE_RX_P, PCIE_RX_N, PCIE_REFCLK_P,
        (
 	
         //---------- Input -------------------------------------
-        .CLK_CLK                        ( sys_clk ),
+        .CLK_CLK                        ( pcie_ref_clk ),
         .CLK_TXOUTCLK                   ( PIPE_TXOUTCLK_OUT ),     // Reference clock from lane 0
         .CLK_RXOUTCLK_IN                ( PIPE_RXOUTCLK_OUT ),
         .CLK_RST_N                      ( 1'b1 ),
