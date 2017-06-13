@@ -62,7 +62,8 @@ module xillydemo
   wire        capture_clk;
   // reg [31:0]  capture_data;
   wire        capture_en;
-  reg [4:0]   slowdown;
+  // reg [4:0]   slowdown;
+  reg [1:0]   slowdown;
   wire        capture_full;
 
   reg 	       capture_open;
@@ -243,7 +244,8 @@ module xillydemo
       // not for performance. Sustained data rates of 200 MB/sec are
       // easily reached with performance-oriented setting.
       // The slowdown register has no function in a real-life application.
-      slowdown <= slowdown + 1;
+      // slowdown <= slowdown + 1;
+      slowdown <= 0;
 
       // capture_has_been_full remembers that the FIFO has been full
       // until the file is closed. capture_has_been_nonfull prevents
@@ -266,7 +268,9 @@ module xillydemo
   assign capture_en = capture_open && !capture_full && 
           !capture_has_been_full &&
           (slowdown == 0);
-      
+  // assign capture_en = capture_open && !capture_full && 
+  //         !capture_has_been_full;      
+
    // Clock crossing logic: bus_clk -> capture_clk
   always @(posedge capture_clk)
     begin
